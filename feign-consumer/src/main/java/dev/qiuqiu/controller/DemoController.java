@@ -15,7 +15,7 @@ public class DemoController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/test/{userId}")
     public String test(@PathVariable("userId") String userId) {
         return userService.getUserCurrentInfo(userId);
     }
