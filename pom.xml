@@ -12,6 +12,8 @@
         <module>eureka-server</module>
         <module>eureka-client</module>
         <module>zuul-service</module>
+        <module>feign-service</module>
+        <module>feign-consumer</module>
     </modules>
     <name>graduation</name>
     <description>Demo project for Spring Boot</description>
