@@ -1,10 +1,39 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
 spring:
+  profiles:
+    default
   application:
     name: eureka-client
 
 server:
   port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+---
+
+spring:
+  profiles:
+    dev1
+
+  application:
+    name: eureka-client
+
+server:
+  port: 8082
+
+---
+spring:
+  profiles:
+    dev2
+
+  application:
+    name: eureka-client
+
+server:
+  port: 8083
