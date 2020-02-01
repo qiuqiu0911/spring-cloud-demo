@@ -15,6 +15,7 @@ eureka:
       enabled: true
   instance:
     instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    prefer-ip-address: true
 ---
 
 spring:
@@ -23,6 +24,10 @@ spring:
 
   application:
     name: eureka-client
+
+info:
+  app:
+    name: ${spring.application.name}
 
 server:
   port: 8082

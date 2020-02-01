@@ -21,7 +21,6 @@ public class DemoController {
         return "test passed";
     }
 
-
     private final DiscoveryClient discoveryClient;
 
     @RequestMapping("/service-instances/{applicationName}")

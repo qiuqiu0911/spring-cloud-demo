@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: zuul-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    prefer-ip-address: true
+server:
+  port: 6069
+
+info:
+  app:
+    name: ${spring.application.name}
+zuul:
+  routes:
+    eureka-client: /eureka-api/**
+    zuul-service: /zuul-api/**
