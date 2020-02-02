@@ -1,6 +1,6 @@
 package dev.qiuqiu.controller;
 
-import dev.qiuqiu.service.IUserService;
+import dev.qiuqiu.service.UserFeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
 
-    private final IUserService userService;
+    private final UserFeignClient userFeignClient;
 
-    public DemoController(IUserService userService) {
-        this.userService = userService;
+    public DemoController(UserFeignClient userFeignClient) {
+        this.userFeignClient = userFeignClient;
     }
 
     @GetMapping("/test/{userId}")
     public String test(@PathVariable("userId") String userId) {
-        return userService.getUserCurrentInfo(userId);
+        return userFeignClient.getUserCurrentInfo(userId);
     }
 
 }
