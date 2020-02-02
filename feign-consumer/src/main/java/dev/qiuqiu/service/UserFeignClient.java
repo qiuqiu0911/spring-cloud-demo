@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 // 不支持下划线
-@Primary
+@Primary//设置为主要的bean
 @FeignClient(name = "feign-user-service", fallback = HystrixFallBack.class)
 public interface UserFeignClient {
 
@@ -17,7 +17,7 @@ public interface UserFeignClient {
 }
 
 @Component
-class HystrixFallBack implements UserFeignClient{
+class HystrixFallBack implements UserFeignClient {
 
     @Override
     public String getUserCurrentInfo(String userId) {
@@ -26,7 +26,7 @@ class HystrixFallBack implements UserFeignClient{
 }
 
 @Component
-class HystrixFallBackFactory implements FallbackFactory<UserFeignClient>{
+class HystrixFallBackFactory implements FallbackFactory<UserFeignClient> {
 
     @Override
     public UserFeignClient create(Throwable throwable) {
